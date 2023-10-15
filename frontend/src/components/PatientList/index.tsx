@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Table, Button, TableHead, Typography, TableCell, TableRow, TableBody } from '@mui/material';
 import { Patient } from '../../../../types';
+import AddPatientModal from '../AddPatientModal';
 
 interface Props {
     patients: Patient[];
@@ -45,6 +46,7 @@ const PatientList = ({ patients, setPatients }: Props) => {
         </TableBody>
       </Table>
       <Button variant="contained" onClick={() => {handleAddPatient(); setModalOpen(true);}}>Add Patient</Button>
+      <AddPatientModal open={modalOpen} onClose={() => setModalOpen(false)} onSubmit={handleAddPatient} />
     </Box>
   );
 };
