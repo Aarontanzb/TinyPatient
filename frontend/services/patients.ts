@@ -11,4 +11,13 @@ const getAll = async () => {
     return data;
   };
 
-export default { getAll };
+const addNew = async (patient: Patient) => {
+    const { data } = await axios.post<Patient>(
+      `${apiBaseUrl}/patients`,
+      patient
+    );
+  
+    return data;
+  };
+
+export default { getAll, addNew };

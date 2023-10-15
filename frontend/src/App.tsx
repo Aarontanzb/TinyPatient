@@ -13,7 +13,7 @@ function App() {
     };
     
     void fetchInitialData();
-  }, []);
+  }, [patients]);
   return (
     <>
       <div className="patient-list">

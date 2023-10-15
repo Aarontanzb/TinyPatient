@@ -3,4 +3,9 @@ import { Patient } from '../../types';
 
 const getAll = (): Patient[] => patientData;
 
-export default { getAll };
+const addNew = (patient: Patient): Patient => {
+  patientData.push(patient);
+  return patient;
+};
+
+export default { getAll, addNew };
