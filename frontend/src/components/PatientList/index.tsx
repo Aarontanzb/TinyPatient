@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, Table, Button, TableHead, Typography, TableCell, TableRow, TableBody } from '@mui/material';
 import { Patient } from '../../../../types';
 import AddPatientModal from '../AddPatientModal';
+import patientService from '../../../services/patients';
 
 interface Props {
     patients: Patient[];
@@ -12,6 +13,7 @@ interface Props {
 const PatientList = ({ patients, setPatients }: Props) => {
 
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  
 
   const handleAddPatient = () => {
     // Add the patient to the patients state
@@ -23,12 +25,13 @@ const PatientList = ({ patients, setPatients }: Props) => {
     setPatients([...patients, newPatient]);
     setModalOpen(false);
   };
+  
 
   return (
     <Box sx={{width: '100%', display: 'flex', justifyContent: 'center'}}>
       <Box sx={{width: '80%'}}>
         <Box sx={{height: '30px'}}></Box>
-        <Typography variant="h4" align="center">Tiny Patients</Typography>
+        <Typography variant="h4" align="center">Tiny Patient</Typography>
         <Box sx={{height: '80px'}}></Box>
         <Table>
           <TableHead>
