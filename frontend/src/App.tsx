@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import PatientList from './components/PatientList';
 
 function App() {

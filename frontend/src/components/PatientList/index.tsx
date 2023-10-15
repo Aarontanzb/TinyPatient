@@ -25,28 +25,34 @@ const PatientList = ({ patients, setPatients }: Props) => {
   };
 
   return (
-    <Box>
-      <Typography variant="h4">Patient List</Typography>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>First Name</TableCell>
-            <TableCell>Last Name</TableCell>
-            <TableCell>Info</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {patients.map((patient) => (
+    <Box sx={{width: '100%', display: 'flex', justifyContent: 'center'}}>
+      <Box sx={{width: '80%'}}>
+        <Box sx={{height: '30px'}}></Box>
+        <Typography variant="h4" align="center">Tiny Patients</Typography>
+        <Box sx={{height: '80px'}}></Box>
+        <Table>
+          <TableHead>
             <TableRow>
-              <TableCell>{patient.first}</TableCell>
-              <TableCell>{patient.last}</TableCell>
-              <TableCell>{patient.info}</TableCell>
+              <TableCell>First Name</TableCell>
+              <TableCell>Last Name</TableCell>
+              <TableCell>Info</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      <Button variant="contained" onClick={() => {handleAddPatient(); setModalOpen(true);}}>Add Patient</Button>
-      <AddPatientModal open={modalOpen} onClose={() => setModalOpen(false)} onSubmit={handleAddPatient} />
+          </TableHead>
+          <TableBody>
+            {patients.map((patient) => (
+              <TableRow>
+                <TableCell>{patient.first}</TableCell>
+                <TableCell>{patient.last}</TableCell>
+                <TableCell>{patient.info}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        <Box sx={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}>
+          <Button variant="contained" onClick={() => {handleAddPatient(); setModalOpen(true);}}>Add Patient</Button>
+        </Box>
+        <AddPatientModal open={modalOpen} onClose={() => setModalOpen(false)} onSubmit={handleAddPatient} />
+      </Box>
     </Box>
   );
 };
