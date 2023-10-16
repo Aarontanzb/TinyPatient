@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = ['http://localhost:3000', 'https://tinypatient.netlify.app/'];
+const allowedOrigins = ['http://localhost:3000', 'https://tinypatient.netlify.app', 'https://tinypatient.onrender.com'];
 
 const options: cors.CorsOptions = {
   origin: allowedOrigins
@@ -27,3 +27,4 @@ mongoose.connect(process.env.MONGO_URI as string)
   }).catch((error) => {
     console.log('error connecting to MongoDB:', error.message);
   });
+
