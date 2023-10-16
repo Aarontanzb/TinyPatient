@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Patient } from "../../types";
+import { NewPatient, Patient } from "../../types";
 
 const apiBaseUrl = 'http://localhost:3001/api';
 
@@ -12,7 +12,7 @@ const getAll = async () => {
   };
 
 const addNew = async (patient: Patient) => {
-    const { data } = await axios.post<Patient>(
+    const { data } = await axios.post<NewPatient>(
       `${apiBaseUrl}/patients`,
       patient
     );
