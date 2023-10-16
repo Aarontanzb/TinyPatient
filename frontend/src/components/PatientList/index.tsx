@@ -16,10 +16,14 @@ const PatientList = ({ patients, setPatients }: Props) => {
   
   const handleAddPatient = async (data: Patient) => {
     try {
-        const patient = await patientService.addNew(data);
-        setPatients(patients.concat(patient));    
-        setModalOpen(false);
-    } catch (error) {
+      const newPatient = await patientService.addNew(data);
+      const patient: Patient = {
+        ...newPatient,
+        _id: uuidv4(), 
+      };
+      setPatients(patients.concat(patient));    
+      setModalOpen(false);
+  } catch (error) {
         console.error(error);
     }
   };
