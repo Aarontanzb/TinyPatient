@@ -17,7 +17,7 @@ export const AddPatientModal: React.FC<Props> = ({ open, onClose, onSubmit }) =>
   const handleSubmit = () => {
     if (firstRef.current && lastRef.current) {
       const data: Patient = {
-        id: uuidv4(),
+        _id: uuidv4(),
         first: firstRef.current.value,
         last: lastRef.current.value,
       };
