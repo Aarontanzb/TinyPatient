@@ -1,6 +1,8 @@
 export interface Patient {
-    id: string;
+    _id: string;
     first: string;
     last: string;
     info?: string;
   }
+
+export type NewPatient = Omit<Patient, '_id'>;
