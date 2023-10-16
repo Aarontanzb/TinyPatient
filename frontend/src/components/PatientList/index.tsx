@@ -23,6 +23,15 @@ const PatientList = ({ patients, setPatients }: Props) => {
         console.error(error);
     }
   };
+
+  const handleDeletePatient = async (id: string) => {
+    try {
+        patientService.deletePatient(id);
+        setPatients(patients.filter(patient => patient.id !== id));
+    } catch (error) {
+        console.error(error);
+    }
+  };
   
   return (
     <Box sx={{width: '100%', display: 'flex', justifyContent: 'center', backgroundColor: '#F0F0F0'}}>
@@ -48,7 +57,7 @@ const PatientList = ({ patients, setPatients }: Props) => {
                 <TableCell sx={{color: '#333333'}}>{patient.last}</TableCell>
                 <TableCell sx={{color: '#333333', paddingRight: '10px'}}>{patient.info}</TableCell>
                 <TableCell>
-                  <Button variant="contained" color="secondary" >Delete</Button>
+                  <Button variant="contained" color="secondary" onClick={() => {handleDeletePatient(patient.id);}}>Delete</Button>
                 </TableCell>
               </TableRow>
             ))}

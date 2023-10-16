@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Modal, TextField, Button, Box, useTheme } from '@mui/material';
 import { Patient } from '../../../../types';
+import { v4 as uuidv4 } from 'uuid';
 
 interface Props {
   open: boolean;
@@ -16,6 +17,7 @@ export const AddPatientModal: React.FC<Props> = ({ open, onClose, onSubmit }) =>
   const handleSubmit = () => {
     if (firstRef.current && lastRef.current) {
       const data: Patient = {
+        id: uuidv4(),
         first: firstRef.current.value,
         last: lastRef.current.value,
       };

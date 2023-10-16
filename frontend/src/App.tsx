@@ -13,11 +13,11 @@ function App() {
     };
     
     void fetchInitialData();
-  }, [patients]);
+  }, []);
   return (
     <>
       <div className="patient-list">
-        <PatientList patients={patients} setPatients={() => {}} />
+        <PatientList patients={patients} setPatients={setPatients} />
       </div>
     </>
   );

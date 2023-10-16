@@ -8,4 +8,12 @@ const addNew = (patient: Patient): Patient => {
   return patient;
 };
 
-export default { getAll, addNew };
+const deletePatient = (id: string): Patient => {
+  const patient = patientData.find(p => p.id === id);
+  if (patient) {
+    patientData.splice(patientData.indexOf(patient), 1);
+  }
+  return patient as Patient;
+};
+
+export default { getAll, addNew, deletePatient };

@@ -23,4 +23,17 @@ router.post('/', (req, res) => {
 
 });
 
+router.delete('/:id', (req, res) => {
+  try {
+    const deletedPatient = patientService.deletePatient(req.params.id);
+    res.send(deletedPatient);
+  } catch (error: unknown) {
+    let errorMessage = 'Something went wrong.';
+    if (error instanceof Error) {
+      errorMessage += ' Error: ' + error.message;
+    }
+    res.status(400).send(errorMessage);
+  }
+});
+
 export default router;

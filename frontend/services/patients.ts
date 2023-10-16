@@ -20,4 +20,12 @@ const addNew = async (patient: Patient) => {
     return data;
   };
 
-export default { getAll, addNew };
+const deletePatient = async (id: string) => {
+    const { data } = await axios.delete<Patient>(
+      `${apiBaseUrl}/patients/${id}`
+    );
+  
+    return data;
+};
+
+export default { getAll, addNew, deletePatient };
