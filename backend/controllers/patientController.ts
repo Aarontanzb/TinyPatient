@@ -35,4 +35,17 @@ const deletePatient = async (req: Request, res: Response) => {
       }
 };
 
-export default { createPatient, getPatients, deletePatient };
+// update patient in db
+const updatePatient = async (req: Request, res: Response) => {
+    try {
+      const updatedPatient = await patientModel.findByIdAndUpdate(req.params.id, req.body as { first: string; last: string; info?: string }, { new: true });
+        res.send(updatedPatient);
+    } catch (error: unknown) {
+      let errorMessage = 'Something went wrong.';
+      if (error instanceof Error) {
+        errorMessage += ' Error: ' + error.message;
+      }
+      res.status(400).send(errorMessage);
+    }
+};
+export default { createPatient, getPatients, deletePatient, updatePatient };

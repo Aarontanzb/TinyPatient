@@ -28,4 +28,13 @@ const deletePatient = async (id: string) => {
     return data;
 };
 
-export default { getAll, addNew, deletePatient };
+const editPatient = async (patient: Patient) => {
+    const { data } = await axios.put<Patient>(
+      `${apiBaseUrl}/patients/${patient._id}`,
+      patient
+    );
+  
+    return data;
+};
+
+export default { getAll, addNew, deletePatient, editPatient };
