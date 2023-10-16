@@ -1,9 +1,6 @@
-import dotenv from 'dotenv';
-dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import patientsRouter from './routes/patients';
-import mongoose from 'mongoose';
 
 const app = express();
 
@@ -17,13 +14,13 @@ app.use(express.json());
 
 const PORT = 3001;
 
+app.get('/api', (_req, res) => {
+  console.log('someone pinged here');
+  res.send('pong');
+});
+
 app.use('/api/patients', patientsRouter);
 
-mongoose.connect(process.env.MONGO_URI as string)
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT} and connected to MongoDB`);
-    });
-  })
-  .catch((error) => {console.log(error);});
-
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
