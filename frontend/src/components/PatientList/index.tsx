@@ -72,13 +72,13 @@ const PatientList = ({ patients, setPatients }: Props) => {
             {patients.map((patient) => (
               <TableRow key={uuidv4()}>
                 <TableCell></TableCell> {/* Empty TableCell for spacing */}
-                <TableCell sx={{color: '#333333'}}>{patient.first}</TableCell>
-                <TableCell sx={{color: '#333333'}}>{patient.last}</TableCell>
-                <TableCell sx={{color: '#333333', paddingRight: '10px'}}>{patient.info}</TableCell>
+                <TableCell id='firstcell' sx={{color: '#333333'}}>{patient.first}</TableCell>
+                <TableCell id='secondcell' sx={{color: '#333333'}}>{patient.last}</TableCell>
+                <TableCell id='thirdcell' sx={{color: '#333333', paddingRight: '10px'}}>{patient.info}</TableCell>
                 <TableCell>
                   <Box sx={{display: 'flex', gap: '10px'}}>
-                    <Button variant="contained" color="primary" onClick={() => {setEditModalOpen(true);}}>Edit</Button>
-                    <Button variant="contained" color="secondary" onClick={() => {handleDeletePatient(patient._id);}}>Delete</Button>
+                    <Button id='edit' variant="contained" color="primary" onClick={() => {setEditModalOpen(true);}}>Edit</Button>
+                    <Button id='delete' variant="contained" color="secondary" onClick={() => {handleDeletePatient(patient._id);}}>Delete</Button>
                     <EditPatientModal open={editModalOpen} onClose={() => setEditModalOpen(false)} onSubmit={handleEditPatient} patient={patient}/>
                   </Box>
                 </TableCell>

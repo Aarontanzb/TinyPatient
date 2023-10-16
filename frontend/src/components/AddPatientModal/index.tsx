@@ -48,10 +48,10 @@ export const AddPatientModal: React.FC<Props> = ({ open, onClose, onSubmit }) =>
     >
         <h2>Add Patient Entry</h2>
         <form noValidate autoComplete="off">
-          <TextField required label="First" variant="outlined" fullWidth inputRef={firstRef} />
-          <TextField required label="Last" variant="outlined" fullWidth style={{ marginTop: '20px' }} inputRef={lastRef} />
-          <TextField label="Info" variant="outlined" fullWidth style={{ marginTop: '20px' }} inputRef={infoRef} />
-          <Button variant="contained" color="primary" style={{ marginTop: '20px' }} onClick={handleSubmit}>
+          <TextField id='first' required label="First" variant="outlined" fullWidth inputRef={firstRef} />
+          <TextField id='last' required label="Last" variant="outlined" fullWidth style={{ marginTop: '20px' }} inputRef={lastRef} />
+          <TextField id='info' label="Info" variant="outlined" fullWidth style={{ marginTop: '20px' }} inputRef={infoRef} />
+          <Button id='add' variant="contained" color="primary" style={{ marginTop: '20px' }} onClick={handleSubmit}>
             Add
           </Button>
         </form>
