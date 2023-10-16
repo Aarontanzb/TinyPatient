@@ -1,13 +1,14 @@
 import React, { useRef } from 'react';
 import { Modal, TextField, Button, Box, useTheme } from '@mui/material';
 import { Patient } from '../../../../types';
-import { v4 as uuidv4 } from 'uuid';
+import { ObjectId } from 'mongodb';
 
 interface Props {
   open: boolean;
   onClose: () => void;
   onSubmit: (data: Patient) => void;
 }
+
 
 export const AddPatientModal: React.FC<Props> = ({ open, onClose, onSubmit }) => {
   const firstRef = useRef<HTMLInputElement>(null);
@@ -17,7 +18,7 @@ export const AddPatientModal: React.FC<Props> = ({ open, onClose, onSubmit }) =>
   const handleSubmit = () => {
     if (firstRef.current && lastRef.current) {
       const data: Patient = {
-        id: uuidv4(),
+        _id: new ObjectId(),
         first: firstRef.current.value,
         last: lastRef.current.value,
       };

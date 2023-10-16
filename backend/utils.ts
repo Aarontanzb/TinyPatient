@@ -17,12 +17,13 @@ export const newPatient = (object: unknown): Patient=> {
     if ( !('id' in object)) throw new Error('id missing');
     if ( !('first' in object)) throw new Error('first missing');
     if ( !('last' in object)) throw new Error('last missing');
-    if ( !('info' in object)) throw new Error('info missing');
+
+    const info = 'info' in object ? parseString(object.info, 'info') : undefined;
   
     return {
       id: parseString(object.id, 'id'),
       first: parseString(object.first, 'first'),
       last: parseString(object.last, 'last'),
-      info: parseString(object.info, 'info'),
+      info,
     };
   };

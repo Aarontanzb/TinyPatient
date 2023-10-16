@@ -1,5 +1,7 @@
+import { Types } from 'mongoose';
+
 export interface Patient {
-    id: string;
+    _id: Types.ObjectId;
     first: string;
     last: string;
     info?: string;
