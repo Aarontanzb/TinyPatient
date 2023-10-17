@@ -20,7 +20,7 @@ app.use(express.json());
 const PORT = 3001;
 
 app.use('/api/patients', patientsRouter);
-app.use('/api/health', healthRouter)
+app.use('/api/health', healthRouter);
 
 if (process.env.NODE_ENV === 'test') {
   app.use('/api/testing', testingRouter);
