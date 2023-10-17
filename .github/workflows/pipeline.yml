@@ -25,13 +25,32 @@ jobs:
           cd backend
           npm install
 
+      - name: Check backend style
+        run: |
+          cd backend
+          chmod +x node_modules/.bin/eslint
+          npm run lint
+      
+
       # Frontend steps
       - name: Install frontend dependencies
         run: |
           cd frontend
           npm install
+
+      - name: Check frontend style
+        run: |
+          cd frontend
+          npm run lint
       
       - name: Build frontend
         run: |
           cd frontend
           npm run build
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: frontend
+          start: npm start
+        
