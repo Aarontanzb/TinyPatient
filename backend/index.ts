@@ -14,15 +14,17 @@ const allowedOrigins = ['http://localhost:3000', 'https://tinypatient.netlify.ap
 const options: cors.CorsOptions = {
   origin: allowedOrigins
 };
+
 app.use(cors(options));
 app.use(express.json());
-
-const PORT = 3001;
 
 app.use('/api/testing', testingRouter);
 app.use('/api/patients', patientsRouter);
 app.use('/api/health', healthRouter);
 
+const PORT = 3001;
+
+// Connect to MongoDB and start test server
 mongoose.connect(process.env.MONGO_URI as string)
   .then(() => {
     app.listen(PORT, () => {

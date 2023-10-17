@@ -78,8 +78,9 @@ describe('Test edit and delete buttons', () => {
     cy.wait(500);
 
     // Check if the values are edited correctly
-    cy.contains('Tan').should('exist'); 
-    cy.contains('Aaron').should('exist'); 
+    cy.get('td#firstcell').contains('Tan').should('exist'); 
+    cy.get('td#secondcell').contains('Aaron').should('exist'); 
+    cy.get('td#thirdcell').contains('Developer').should('exist'); 
   });
 
   it('patients can be deleted', () => {
