@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  simple_deployment_pipeline:
+  Deployment_pipeline:
     runs-on: ubuntu-20.04
 
     steps:
@@ -52,10 +52,18 @@ jobs:
           cd frontend
           npm run build
 
+      # Cypress testing
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           working-directory: frontend
           start: npm run dev
         
-        
+      # Deployment backend
+      - name: Deploy
+        # Only run this step if the branch is main
+        if: github.ref == 'refs/heads/main'
+        env:
+          deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          curl "$deploy_url"
