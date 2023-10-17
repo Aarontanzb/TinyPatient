@@ -102,7 +102,7 @@ To get a local copy up and running follow these simple steps.
 
 Demo
 
-<img src="images/demo.PNG" alt="Demo" width="500" height="500">
+<img src="images/demo.PNG" alt="Demo" width="800" height="500">
 
 Notifications
 
