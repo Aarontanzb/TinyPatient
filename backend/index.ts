@@ -22,9 +22,7 @@ const PORT = 3001;
 app.use('/api/patients', patientsRouter);
 app.use('/api/health', healthRouter);
 
-if (process.env.NODE_ENV === 'test') {
-  app.use('/api/testing', testingRouter);
-}
+app.use('/api/testing', testingRouter);
 
 mongoose.connect(process.env.MONGO_URI as string)
   .then(() => {
