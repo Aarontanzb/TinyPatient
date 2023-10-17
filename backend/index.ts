@@ -19,18 +19,14 @@ app.use(express.json());
 
 const PORT = 3001;
 
+app.use('/api/testing', testingRouter);
 app.use('/api/patients', patientsRouter);
 app.use('/api/health', healthRouter);
-
-app.use('/api/testing', testingRouter);
 
 mongoose.connect(process.env.MONGO_URI as string)
   .then(() => {
     app.listen(PORT, () => {
     console.log(`Server running on port ${PORT} and connected to MongoDB`);
-    if (process.env.NODE_ENV === 'test') {
-      console.log('Testing mode');
-    }
 });
   }).catch((error) => {
     console.log('error connecting to MongoDB:', error.message);
