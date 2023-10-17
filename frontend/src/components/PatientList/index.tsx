@@ -44,9 +44,10 @@ const PatientList = ({ patients, setPatients }: Props) => {
     try {
       console.log(data);
       const updatedPatient = await patientService.editPatient(data);
-      setPatients(patients.map(patient => patient._id === updatedPatient._id ? updatedPatient : patient));
-      setEditModalOpen(false);
       console.log(updatedPatient);
+      setPatients(patients.map(patient => patient._id === updatedPatient._id ? updatedPatient : patient));
+      console.log('data2');
+      setEditModalOpen(false);
     } catch (error) {
       console.error(error);
     }
