@@ -25,7 +25,7 @@ jobs:
           cd backend
           npm install
           chmod +x $(npm bin)/ts-node
-          npm run start:test
+          npm run start:test &
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
 
