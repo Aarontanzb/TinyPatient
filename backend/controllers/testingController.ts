@@ -17,7 +17,7 @@ const resetPatients = async (_req: Request, res: Response) => {
 
 // get all patients from db
 const getPatients = async (_req: Request, res: Response) => {
-    console.log('getPatients')
+    console.log('getPatients');
     const patients = await patientModel.find({}).sort({createdAt: -1});
     res.send(patients);
 };
