@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+const collectionName = process.env.NODE_ENV === 'test' ? 'cypress' : 'patients';
+
 const Schema = mongoose.Schema;
 
 const patientSchema = new Schema({
@@ -9,6 +11,6 @@ const patientSchema = new Schema({
   info: String
 }, {timestamps: true});
 
-const patientModel = mongoose.model("Patient", patientSchema);
+const patientModel = mongoose.model("Patient", patientSchema, collectionName);
 
 export default patientModel;

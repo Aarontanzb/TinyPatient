@@ -1,11 +1,15 @@
 import axios from "axios";
 import { NewPatient, Patient } from "../../types";
 
-const apiBaseUrl = 'https://tinypatient.onrender.com/api';
+const baseApiUrl = 'https://tinypatient.onrender.com/api';
+const apiEndpoint = process.env.NODE_ENV === 'test' ? 'testing' : 'patients';
+
+const apiBaseUrl = `${baseApiUrl}/${apiEndpoint}`;
 
 const getAll = async () => {
+    console.log('getAll');
     const { data } = await axios.get<Patient[]>(
-      `${apiBaseUrl}/patients`
+      `${apiBaseUrl}`
     );
   
     return data;
@@ -13,7 +17,7 @@ const getAll = async () => {
 
 const addNew = async (patient: Patient) => {
     const { data } = await axios.post<NewPatient>(
-      `${apiBaseUrl}/patients`,
+      `${apiBaseUrl}`,
       patient
     );
   
@@ -22,7 +26,7 @@ const addNew = async (patient: Patient) => {
 
 const deletePatient = async (id: string) => {
     const { data } = await axios.delete<Patient>(
-      `${apiBaseUrl}/patients/${id}`
+      `${apiBaseUrl}/${id}`
     );
   
     return data;
@@ -30,7 +34,7 @@ const deletePatient = async (id: string) => {
 
 const editPatient = async (patient: Patient) => {
     const { data } = await axios.put<Patient>(
-      `${apiBaseUrl}/patients/${patient._id}`,
+      `${apiBaseUrl}/${patient._id}`,
       patient
     );
   
