@@ -1,0 +1,48 @@
+name: Deployment pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  simple_deployment_pipeline:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' 
+      
+      # Backend steps
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          npm install
+
+      - name: Check backend style
+        run: |
+          cd backend
+          npm run lint
+      
+
+      # Frontend steps
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm install
+
+      - name: Check frontend style
+        run: |
+          cd frontend
+          npm run lint
+      
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run build
