@@ -1,7 +1,7 @@
 import axios from "axios";
 import { NewPatient, Patient } from "../../types";
 
-const baseApiUrl = 'https://tinypatient.onrender.com/api';
+const baseApiUrl = 'http://localhost:3001/api';
 const apiEndpoint = process.env.NODE_ENV === 'test' ? 'testing' : 'patients';
 
 const apiBaseUrl = `${baseApiUrl}/${apiEndpoint}`;

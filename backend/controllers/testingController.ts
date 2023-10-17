@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 // reset patients in db for testing
 const resetPatients = async (_req: Request, res: Response) => {
     try {
+        console.log('patientModel')
         await patientModel.deleteMany({});
         res.status(204).end();
     } catch (error: unknown) {
@@ -17,7 +18,7 @@ const resetPatients = async (_req: Request, res: Response) => {
 
 // get all patients from db
 const getPatients = async (_req: Request, res: Response) => {
-    console.log('getPatients');
+    console.log('patientModel')
     const patients = await patientModel.find({}).sort({createdAt: -1});
     res.send(patients);
 };

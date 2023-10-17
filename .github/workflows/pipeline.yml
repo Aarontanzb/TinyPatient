@@ -47,7 +47,7 @@ jobs:
           cd frontend
           npm run lint
 
-      - name: Build frontend
+      - name: Build frontend and run test server
         run: |
           cd frontend
           npm run build
@@ -57,7 +57,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: frontend
-          start: npm run dev
+          start: npm run dev:test
 
       # Deployment backend
       - name: Deploy
