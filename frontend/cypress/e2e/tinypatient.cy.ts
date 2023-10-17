@@ -1,6 +1,6 @@
 describe('Tiny Patient', () => {
   beforeEach(function() {
-    cy.request('POST', 'https://tinypatient.onrender.com/api/testing/reset');
+    cy.request('POST', 'http://localhost:3001/api/testing/reset');
     cy.visit('http://localhost:3000');
   });
 
@@ -47,7 +47,7 @@ describe('Tiny Patient', () => {
 
 describe('Test edit and delete buttons', () => {
   beforeEach(function() {
-    cy.request('POST', 'https://tinypatient.onrender.com/api/testing/reset');
+    cy.request('POST', 'http://localhost:3001/api/testing/reset');
     cy.visit('http://localhost:3000');
 
     // Add Patient
