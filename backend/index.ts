@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 import testingRouter from './routes/testing';
+import healthRouter from './routes/health';
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(express.json());
 const PORT = 3001;
 
 app.use('/api/patients', patientsRouter);
+app.use('/api/health', healthRouter)
 
 if (process.env.NODE_ENV === 'test') {
   app.use('/api/testing', testingRouter);
