@@ -48,10 +48,10 @@ export const EditPatientModal: React.FC<Edit> = ({ open, onClose, onSubmit, pati
     >
         <h2>Edit Patient Entry</h2>
         <form noValidate autoComplete="off">
-          <TextField required label="First" variant="outlined" fullWidth inputRef={firstRef} defaultValue={patient.first}/>
-          <TextField required label="Last" variant="outlined" fullWidth style={{ marginTop: '20px' }} inputRef={lastRef} defaultValue={patient.last}/>
-          <TextField label="Info" variant="outlined" fullWidth style={{ marginTop: '20px' }} inputRef={infoRef} defaultValue={patient.info}/>
-          <Button variant="contained" color="primary" style={{ marginTop: '20px' }} onClick={handleSubmit}>
+          <TextField id='firstEdit' required label="First" variant="outlined" fullWidth inputRef={firstRef} defaultValue={patient.first}/>
+          <TextField id='lastEdit' required label="Last" variant="outlined" fullWidth style={{ marginTop: '20px' }} inputRef={lastRef} defaultValue={patient.last}/>
+          <TextField id='infoEdit' label="Info" variant="outlined" fullWidth style={{ marginTop: '20px' }} inputRef={infoRef} defaultValue={patient.info}/>
+          <Button id='editSubmit' variant="contained" color="primary" style={{ marginTop: '20px' }} onClick={handleSubmit}>
             Edit
           </Button>
         </form>

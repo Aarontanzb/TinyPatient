@@ -15,6 +15,7 @@ const PatientList = ({ patients, setPatients }: Props) => {
 
   const [addModalOpen, setAddModalOpen] = useState<boolean>(false);
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
+  const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null);
   
   const handleAddPatient = async (data: Patient) => {
     try {
@@ -43,9 +44,9 @@ const PatientList = ({ patients, setPatients }: Props) => {
     try {
       console.log(data);
       const updatedPatient = await patientService.editPatient(data);
-      console.log('test2');
       setPatients(patients.map(patient => patient._id === updatedPatient._id ? updatedPatient : patient));
       setEditModalOpen(false);
+      console.log(updatedPatient);
     } catch (error) {
       console.error(error);
     }
@@ -77,9 +78,10 @@ const PatientList = ({ patients, setPatients }: Props) => {
                 <TableCell id='thirdcell' sx={{color: '#333333', paddingRight: '10px'}}>{patient.info}</TableCell>
                 <TableCell>
                   <Box sx={{display: 'flex', gap: '10px'}}>
-                    <Button id='edit' variant="contained" color="primary" onClick={() => {setEditModalOpen(true);}}>Edit</Button>
+                  <Button id='edit' variant="contained" color="primary" onClick={() => {setSelectedPatient(patient);setEditModalOpen(true);}}>Edit</Button>
                     <Button id='delete' variant="contained" color="secondary" onClick={() => {handleDeletePatient(patient._id);}}>Delete</Button>
-                    <EditPatientModal open={editModalOpen} onClose={() => setEditModalOpen(false)} onSubmit={handleEditPatient} patient={patient}/>
+                    <EditPatientModal open={editModalOpen} onClose={() => {setEditModalOpen(false);setSelectedPatient(null);}} 
+                    onSubmit={handleEditPatient} patient={selectedPatient || {} as Patient}/>
                   </Box>
                 </TableCell>
                 <TableCell></TableCell> {/* Empty TableCell for spacing */}
