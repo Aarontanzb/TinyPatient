@@ -1,7 +1,7 @@
 import axios from "axios";
 import { NewPatient, Patient } from "../../types";
 
-const baseApiUrl = process.env.NODE_ENV === 'test' ? 'http://localhost:3001/api/testing' : 'https://tinypatient.onrender.com/patients';
+const baseApiUrl = process.env.NODE_ENV === 'test' ? 'http://localhost:3001/api/testing' : 'https://tinypatient.onrender.com/api/patients';
 
 const getAll = async () => {
     const { data } = await axios.get<Patient[]>(
