@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
     "dev": "ts-node-dev index.ts",
-    "lint": "eslint --ext .ts .",
+    "lint": "npx eslint --ext .ts .",
     "start:test": "NODE_ENV=test ts-node index.ts"
   },
   "author": "Aaron",
