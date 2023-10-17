@@ -101,10 +101,12 @@ To get a local copy up and running follow these simple steps.
 ## Usage
 
 Demo
-<img src="images/demo.PNG" alt="Demo" width="200" height="200">
+
+<img src="images/demo.PNG" alt="Demo" width="500" height="500">
 
 Notifications
-<img src="images/notifications.PNG" alt="Demo" width="150" height="200">
+
+<img src="images/notifications.PNG" alt="Demo" width="400" height="500">
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
