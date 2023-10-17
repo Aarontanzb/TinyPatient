@@ -67,30 +67,12 @@ jobs:
         run: |
           curl "$deploy_url"
       
-      # Notify success if new version is deployed
-      - name: Notify Deployment Success
-        if: success() && github.event_name == 'push'
+      # Notifications for deployment
+      - name: Discord deploy notification
         uses: sarisia/actions-status-discord@v1
+        if: github.event_name == 'push' && !contains(github.event.head_commit.message, '#skip')
         with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          job_name: 'Deployment'
-          mention: 'everyone'
-          description: |
-            New version successfully deployed! 
-            Author: ${{ github.actor }}
-
-      # Notify error if deployment fails
-      - name: Notify Build Failure
-        if: failure()
-        uses: sarisia/actions-status-discord@v1
-        with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          job_name: 'Deployment'
-          mention: 'everyone'
-          description: |
-            Build failed! 
-            Commit: [View Commit](${{ github.event.repository.html_url }}/commit/${{ github.sha }})
-            Author: ${{ github.actor }}
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
 
   Tag_release:
     needs: [Deployment_pipeline]
