@@ -82,7 +82,7 @@ describe('Test edit and delete buttons', () => {
     cy.contains('Aaron').should('exist'); 
   });
 
-  it.only('patients can be deleted', () => {
+  it('patients can be deleted', () => {
     cy.get('Button#delete').click();
 
     cy.contains('Aaron').should('not.exist'); 

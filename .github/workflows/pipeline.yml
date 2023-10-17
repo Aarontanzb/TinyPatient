@@ -20,10 +20,11 @@ jobs:
           node-version: '16' 
       
       # Backend steps
-      - name: Install backend dependencies
+      - name: Install backend dependencies and start test server
         run: |
           cd backend
           npm install
+          npm run start:test
 
       - name: Check backend style
         run: |
@@ -53,4 +54,5 @@ jobs:
         with:
           working-directory: frontend
           start: npm run dev
+        
         
