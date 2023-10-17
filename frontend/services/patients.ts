@@ -33,7 +33,7 @@ const editPatient = async (patient: Patient) => {
       `${baseApiUrl}/${patient._id}`,
       patient
     );
-  
+    
     return data;
 };
 

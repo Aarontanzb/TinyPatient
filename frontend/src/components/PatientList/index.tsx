@@ -3,7 +3,6 @@ import { Box, Table, Button, TableHead, Typography, TableCell, TableRow, TableBo
 import { Patient } from '../../../../types';
 import AddPatientModal from '../AddPatientModal';
 import EditPatientModal from '../EditPatientModal';
-import { v4 as uuidv4 } from 'uuid';
 import patientService from '../../../services/patients';
 
 interface Props {
@@ -19,12 +18,8 @@ const PatientList = ({ patients, setPatients }: Props) => {
   
   const handleAddPatient = async (data: Patient) => {
     try {
-      const newPatient = await patientService.addNew(data);
-      const patient: Patient = {
-        ...newPatient,
-        _id: uuidv4(), 
-      };
-      setPatients(patients.concat(patient));    
+      const newPatient = await patientService.addNew(data) as Patient;
+      setPatients(patients.concat(newPatient));   
       setAddModalOpen(false);
   } catch (error) {
       console.error(error);
@@ -42,11 +37,13 @@ const PatientList = ({ patients, setPatients }: Props) => {
 
   const handleEditPatient = async (data: Patient) => {
     try {
-      console.log(data);
       const updatedPatient = await patientService.editPatient(data);
       console.log(updatedPatient);
-      setPatients(patients.map(patient => patient._id === updatedPatient._id ? updatedPatient : patient));
-      console.log('data2');
+      setPatients(prevPatients => 
+        prevPatients.map(patient => 
+            patient._id === updatedPatient._id ? updatedPatient : patient
+        )
+    );
       setEditModalOpen(false);
     } catch (error) {
       console.error(error);
@@ -72,14 +69,14 @@ const PatientList = ({ patients, setPatients }: Props) => {
           </TableHead>
           <TableBody>
             {patients.map((patient) => (
-              <TableRow key={uuidv4()}>
+              <TableRow key={patient._id}>
                 <TableCell></TableCell> {/* Empty TableCell for spacing */}
                 <TableCell id='firstcell' sx={{color: '#333333'}}>{patient.first}</TableCell>
                 <TableCell id='secondcell' sx={{color: '#333333'}}>{patient.last}</TableCell>
                 <TableCell id='thirdcell' sx={{color: '#333333', paddingRight: '10px'}}>{patient.info}</TableCell>
                 <TableCell>
                   <Box sx={{display: 'flex', gap: '10px'}}>
-                  <Button id='edit' variant="contained" color="primary" onClick={() => {setSelectedPatient(patient);setEditModalOpen(true);}}>Edit</Button>
+                    <Button id='edit' variant="contained" color="primary" onClick={() => {setSelectedPatient(patient);setEditModalOpen(true);}}>Edit</Button>
                     <Button id='delete' variant="contained" color="secondary" onClick={() => {handleDeletePatient(patient._id);}}>Delete</Button>
                     <EditPatientModal open={editModalOpen} onClose={() => {setEditModalOpen(false);setSelectedPatient(null);}} 
                     onSubmit={handleEditPatient} patient={selectedPatient || {} as Patient}/>
