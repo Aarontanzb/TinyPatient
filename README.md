@@ -127,6 +127,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Aaron - https://linkedin.com/in/tzb-aaron - tan.zb@u.nus.edu 
 
-Project Link: [https://github.com/Aarontanzb/TinyPatient](https://github.com/Aarontanzb/TinyPatient)
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
